@@ -51,7 +51,11 @@ export function uninstallHooks(settingsPath = SETTINGS): string {
 }
 
 export function hooksInstalled(settingsPath = SETTINGS): boolean {
-  try { return existsSync(settingsPath) && readFileSync(settingsPath, "utf8").includes(MARK); } catch { return false; }
+  try {
+    if (!existsSync(settingsPath)) return false;
+    const s: any = JSON.parse(readFileSync(settingsPath, "utf8") || "{}");
+    return Object.values<HookEntry[]>(s.hooks ?? {}).some((entries) => entries.some(isOurs));
+  } catch { return false; }
 }
 
 export function pluginInstalled(): boolean {

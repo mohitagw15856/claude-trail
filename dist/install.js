@@ -46,7 +46,10 @@ export function uninstallHooks(settingsPath = SETTINGS) {
 }
 export function hooksInstalled(settingsPath = SETTINGS) {
     try {
-        return existsSync(settingsPath) && readFileSync(settingsPath, "utf8").includes(MARK);
+        if (!existsSync(settingsPath))
+            return false;
+        const s = JSON.parse(readFileSync(settingsPath, "utf8") || "{}");
+        return Object.values(s.hooks ?? {}).some((entries) => entries.some(isOurs));
     }
     catch {
         return false;
