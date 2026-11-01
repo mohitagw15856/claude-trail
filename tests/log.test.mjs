@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { readFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { spawnSync } from "node:child_process";
-import { project, hook, cli } from "./helpers.mjs";
+import { project, hook, cli, HOOK } from "./helpers.mjs";
 
 test("hooks append events and never fail on garbage", () => {
   const p = project();
@@ -19,7 +19,7 @@ test("hooks append events and never fail on garbage", () => {
   assert.equal(log[2].promptId, "p1");
   assert.ok(existsSync(join(p.dir, ".claude-trail/.gitignore")), "log is gitignored by default");
   // garbage stdin: exit 0, nothing logged
-  const r = spawnSync("node", [new URL("../dist/hook.js", import.meta.url).pathname, "PostToolUse"], { input: "not json", env: p.env, encoding: "utf8" });
+  const r = spawnSync("node", [HOOK, "PostToolUse"], { input: "not json", env: p.env, encoding: "utf8" });
   assert.equal(r.status, 0);
   assert.equal(readFileSync(join(p.dir, ".claude-trail/events.jsonl"), "utf8").trim().split("\n").length, 3);
 });

@@ -2,9 +2,10 @@ import { mkdtempSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { spawnSync } from "node:child_process";
+import { fileURLToPath } from "node:url";
 
-export const HOOK = new URL("../dist/hook.js", import.meta.url).pathname;
-export const CLI = new URL("../dist/cli.js", import.meta.url).pathname;
+export const HOOK = fileURLToPath(new URL("../dist/hook.js", import.meta.url));
+export const CLI = fileURLToPath(new URL("../dist/cli.js", import.meta.url));
 
 export function project() {
   const dir = mkdtempSync(join(tmpdir(), "trail-"));
