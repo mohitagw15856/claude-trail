@@ -1,0 +1,12 @@
+{
+  "name": "claude-trail",
+  "version": "1.0.0",
+  "description": "🐾 A flight recorder for Claude Code. One log, seven lenses: handoff, blame, cost, rules, digest, vault, passport. English + 中文.",
+  "author": { "name": "Mohit Agarwal", "url": "https://github.com/mohitagw15856" },
+  "homepage": "https://github.com/mohitagw15856/claude-trail",
+  "repository": "https://github.com/mohitagw15856/claude-trail",
+  "license": "Apache-2.0",
+  "keywords": ["memory", "handoff", "blame", "cost", "obsidian", "i18n", "mandarin"],
+  "hooks": "./hooks/hooks.json",
+  "skills": "./skills"
+}

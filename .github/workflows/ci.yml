@@ -1,0 +1,30 @@
+name: CI
+on:
+  push: { branches: [main] }
+  pull_request:
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        node: [20, 22]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "${{ matrix.node }}" }
+      - run: npm install
+      - run: npm test
+      - name: committed dist is fresh
+        if: runner.os == 'Linux'
+        run: git diff --exit-code -- dist
+      - name: hooks stay fast
+        if: runner.os != 'Windows'
+        run: |
+          mkdir -p /tmp/p && cd /tmp/p
+          start=$(date +%s%N)
+          for i in 1 2 3 4 5; do echo '{"session_id":"ci","cwd":"/tmp/p","prompt":"hi"}' | node $GITHUB_WORKSPACE/dist/hook.js UserPromptSubmit; done
+          end=$(date +%s%N)
+          ms=$(( (end - start) / 5000000 ))
+          echo "avg hook time: ${ms} ms"
+          test $ms -lt 400

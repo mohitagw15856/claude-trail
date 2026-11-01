@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 420" width="1000" height="420" role="img" aria-label="claude-trail architecture">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8b949e"/></marker></defs>
+<rect width="1000" height="420" fill="#0d1117"/>
+<rect x="30" y="90" width="220" height="210" rx="12" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+<text x="140.0" y="122" text-anchor="middle" font-family="SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="17" font-weight="700" fill="#e6edf3">Claude Code hooks</text>
+<text x="48" y="154" font-family="SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#e6edf3">SessionStart</text>
+<text x="48" y="180" font-family="SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#e6edf3">UserPromptSubmit</text>
+<text x="48" y="206" font-family="SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#e6edf3">PostToolUse</text>
+<text x="48" y="232" font-family="SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#e6edf3">Stop</text>
+<text x="48" y="258" font-family="SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#e6edf3">SessionEnd</text>
+<rect x="330" y="60" width="300" height="270" rx="12" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+<text x="480.0" y="92" text-anchor="middle" font-family="SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="17" font-weight="700" fill="#f0883e">.claude-trail/events.jsonl</text>
+<text x="348" y="124" font-family="SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#e6edf3">one line per event</text>
+<text x="348" y="150" font-family="SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#e6edf3">redacted at write time</text>
+<text x="348" y="176" font-family="SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#e6edf3">&lt;private&gt; dropped</text>
+<text x="348" y="202" font-family="SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#e6edf3">gitignored by default</text>
+<text x="348" y="228" font-family="SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#e6edf3">no daemon, no database</text>
+<text x="348" y="254" font-family="SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#e6edf3">no network, no API key</text>
+<text x="348" y="280" font-family="SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#e6edf3">&lt; 50 ms per hook</text>
+<rect x="720" y="30" width="260" height="340" rx="12" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+<text x="850.0" y="62" text-anchor="middle" font-family="SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="17" font-weight="700" fill="#e6edf3">seven lenses</text>
+<text x="738" y="94" font-family="SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#e6edf3">🤝 handoff   → HANDOFF.md</text>
+<text x="738" y="120" font-family="SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#e6edf3">🔍 blame     → terminal</text>
+<text x="738" y="146" font-family="SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#e6edf3">💸 cost      → status line</text>
+<text x="738" y="172" font-family="SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#e6edf3">🌱 rules     → CLAUDE.md</text>
+<text x="738" y="198" font-family="SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#e6edf3">📰 digest    → Telegram</text>
+<text x="738" y="224" font-family="SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#e6edf3">🗄️ vault     → Obsidian</text>
+<text x="738" y="250" font-family="SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#e6edf3">🛂 passport  → memory-passport</text>
+<path d="M250,195 C290,195 290,195 330,195" fill="none" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/><text x="290.0" y="187" text-anchor="middle" font-family="SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#8b949e">append</text>
+<path d="M630,195 C670,195 680,195 720,195" fill="none" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/><text x="675.0" y="187" text-anchor="middle" font-family="SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#8b949e">read</text>
+<text x="500" y="400" text-anchor="middle" font-family="SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13" fill="#8b949e">SessionStart reads the log back and injects a short handoff. Everything else is a CLI you run when you want it.</text>
+</svg>

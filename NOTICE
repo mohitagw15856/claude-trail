@@ -1,0 +1,10 @@
+claude-trail
+Copyright 2026 Mohit Agarwal
+
+This product includes software developed by Mohit Agarwal (https://github.com/mohitagw15856).
+
+claude-trail is an independent community project and is not affiliated with, endorsed by, or sponsored by Anthropic, PBC.
+"Claude" and "Claude Code" are trademarks of Anthropic, PBC.
+
+Inspired by claude-mem (https://github.com/thedotmack/claude-mem), Apache-2.0, by Alex Newman.
+Exports to the memory-passport format (https://github.com/mohitagw15856/memory-passport).
