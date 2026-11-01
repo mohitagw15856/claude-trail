@@ -53,7 +53,7 @@
 
 ```bash
 /plugin marketplace add mohitagw15856/claude-trail
-/plugin install claude-trail
+/plugin install trail
 ```
 
 或者在终端里用一条命令：
@@ -234,6 +234,8 @@ trail digest --since 7d --all --telegram  # 发送出去
 **会调用 API 吗？** 不会。交接记录是从日志渲染出来的，不是模型总结的。想要自然语言摘要可以用管道：`trail handoff --print | claude -p "用三句话总结"`。
 
 **支持其他 agent 吗？** 目前只支持 Claude Code。日志格式刻意选择了平淡的 JSONL，所以 Codex、Cursor、OpenCode 的适配器会很小。欢迎 PR。
+
+**为什么插件叫 `trail`，仓库叫 `claude-trail`？** Anthropic 的插件目录不接受以 `claude-` 开头的插件名，以免第三方插件被误认为官方插件。仓库和 npm 包保留描述性的名字，你安装的插件叫 `trail`。
 
 **为什么叫 trail？** Claude 会留下足迹。🐾
 

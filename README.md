@@ -71,7 +71,7 @@ Install from the plugin marketplace inside Claude Code:
 
 ```bash
 /plugin marketplace add mohitagw15856/claude-trail
-/plugin install claude-trail
+/plugin install trail
 ```
 
 Or with one command from a terminal:
@@ -311,6 +311,8 @@ See [docs/troubleshooting.md](docs/troubleshooting.md).
 **Does it call an API?** No. The handoff is rendered from the log, not summarised by a model. If you want prose, pipe it: `trail handoff --print | claude -p "summarise in three lines"`.
 
 **What about other agents?** Claude Code only, for now. The log format is deliberately boring JSONL so adapters for Codex, Cursor or OpenCode are small. PRs welcome.
+
+**Why is the plugin called `trail` and the repo `claude-trail`?** Anthropic's plugin directory rejects plugin names that start with `claude-` so third-party plugins cannot pass as official ones. The repo and the npm package keep the descriptive name; the plugin you install is `trail`.
 
 **Why "trail"?** Claude leaves footprints. 🐾
 

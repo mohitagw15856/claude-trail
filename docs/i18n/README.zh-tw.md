@@ -43,7 +43,7 @@
 
 ```bash
 /plugin marketplace add mohitagw15856/claude-trail
-/plugin install claude-trail
+/plugin install trail
 ```
 
 或者在終端機用一條指令：
@@ -217,6 +217,8 @@ trail digest --since 7d --all --telegram  # 送出
 **會呼叫 API 嗎？** 不會。交接記錄是從日誌渲染出來的，不是模型摘要的。想要自然語言摘要可以用管線：`trail handoff --print | claude -p "用三句話總結"`。
 
 **支援其他 agent 嗎？** 目前只支援 Claude Code。日誌格式刻意選擇了平淡的 JSONL，所以 Codex、Cursor、OpenCode 的轉接器會很小。歡迎 PR。
+
+**為什麼外掛叫 `trail`，儲存庫叫 `claude-trail`？** Anthropic 的外掛目錄不接受以 `claude-` 開頭的外掛名稱，以免第三方外掛被誤認為官方外掛。儲存庫和 npm 套件保留描述性的名字，你安裝的外掛叫 `trail`。
 
 **為什麼叫 trail？** Claude 會留下足跡。🐾
 

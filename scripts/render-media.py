@@ -202,7 +202,20 @@ def logo_png():
     img.convert("RGB").save(PUB / "social.png", optimize=True)
     print("png social.png")
 
+def icon_png():
+    S = 1024
+    img = Image.new("RGBA", (S, S), BG + (255,))
+    d = ImageDraw.Draw(img)
+    d.rounded_rectangle((0, 0, S - 1, S - 1), radius=200, fill=BG + (255,))
+    cx, cy, s = S / 2, S / 2 + 40, 330
+    d.ellipse((cx - s * 0.58, cy - s * 0.1, cx + s * 0.58, cy + s * 0.78), fill=ACC)
+    for dx, dy, r in [(-0.66, -0.46, 0.24), (-0.23, -0.82, 0.26), (0.23, -0.82, 0.26), (0.66, -0.46, 0.24)]:
+        d.ellipse((cx + dx * s - r * s, cy + dy * s - r * s, cx + dx * s + r * s, cy + dy * s + r * s), fill=ACC)
+    img.convert("RGB").save(ROOT / ".claude-plugin/icon.png", optimize=True)
+    print("png .claude-plugin/icon.png")
+
 if __name__ == "__main__":
+    icon_png()
     logo_png()
     png("blame", "trail blame src/retry.ts", read("blame"))
     png("cost", "trail cost", read("cost"))
