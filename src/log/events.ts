@@ -12,7 +12,7 @@ export type Event =
   | { v: 1; ts: string; session: string; type: "prompt"; id: string; text: string; correction?: Correction }
   | { v: 1; ts: string; session: string; type: "tool"; tool: string; file?: string; cmd?: string; added?: number; removed?: number; keys?: string[]; promptId?: string; tests?: boolean; exit?: number }
   | { v: 1; ts: string; session: string; type: "stop"; lastText: string; cost: Cost }
-  | { v: 1; ts: string; session: string; type: "session.end"; reason: string; cost: Cost; durationMs: number }
+  | { v: 1; ts: string; session: string; type: "session.end"; reason: string; cost: Cost; durationMs: number; lastText?: string }
   | { v: 1; ts: string; session: string; type: "rule.applied"; text: string }
   | { v: 1; ts: string; session: string; type: "rule.imported"; text: string; source: string };
 
@@ -67,7 +67,7 @@ export function sessions(events: Event[]): Session[] {
       case "prompt": s.prompts.push(e); break;
       case "tool": s.tools.push(e); break;
       case "stop": s.cost = e.cost; s.lastText = e.lastText; break;
-      case "session.end": s.cost = e.cost; s.reason = e.reason; s.durationMs = e.durationMs; break;
+      case "session.end": s.cost = e.cost; s.reason = e.reason; s.durationMs = e.durationMs; if (e.lastText) s.lastText = e.lastText; break;
     }
   }
   return [...map.values()].sort((a, b) => (a.start ?? "").localeCompare(b.start ?? ""));

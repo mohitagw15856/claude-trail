@@ -5,19 +5,52 @@
   "type": "module",
   "license": "Apache-2.0",
   "author": "Mohit Agarwal (https://github.com/mohitagw15856)",
-  "repository": { "type": "git", "url": "https://github.com/mohitagw15856/claude-trail.git" },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mohitagw15856/claude-trail.git"
+  },
   "homepage": "https://github.com/mohitagw15856/claude-trail#readme",
   "bugs": "https://github.com/mohitagw15856/claude-trail/issues",
-  "keywords": ["claude", "claude-code", "claude-code-plugin", "ai-agents", "flight-recorder", "blame", "handoff", "token-cost", "obsidian", "memory", "mandarin", "i18n", "zero-dependencies"],
-  "engines": { "node": ">=20.0.0" },
-  "bin": { "trail": "dist/cli.js", "claude-trail": "dist/cli.js" },
-  "files": ["dist", "hooks", ".claude-plugin", "skills", "README.md", "LICENSE", "docs/i18n"],
+  "keywords": [
+    "claude",
+    "claude-code",
+    "claude-code-plugin",
+    "ai-agents",
+    "flight-recorder",
+    "blame",
+    "handoff",
+    "token-cost",
+    "obsidian",
+    "memory",
+    "mandarin",
+    "i18n",
+    "zero-dependencies"
+  ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "bin": {
+    "trail": "dist/cli.js",
+    "claude-trail": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "hooks",
+    ".claude-plugin",
+    "skills",
+    "README.md",
+    "LICENSE",
+    "docs/i18n"
+  ],
   "scripts": {
-    "build": "tsc -p tsconfig.json && chmod +x dist/cli.js dist/hook.js",
-    "test": "npm run build && node --test tests/*.test.mjs",
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && node --test",
     "demo": "npm run build && node scripts/make-demo.mjs",
     "media": "npm run demo && uv run --with pillow python scripts/render-media.py",
     "prepublishOnly": "npm run build"
   },
-  "devDependencies": { "typescript": "^5.6.0", "@types/node": "^22.0.0" }
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "@types/node": "^22.0.0"
+  }
 }

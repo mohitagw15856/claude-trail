@@ -29,7 +29,7 @@ function keysOf(text) {
 function lines(text) { return text ? text.split("\n").length : 0; }
 function costOf(transcript) {
     const s = summarizeTranscript(transcript, readGlobal().pricing);
-    return { usd: s.costUsd, exact: s.exact, model: s.primaryModel, usage: s.usage, linesAdded: s.linesAdded, linesRemoved: s.linesRemoved, turns: s.turns };
+    return { cost: { usd: s.costUsd, exact: s.exact, model: s.primaryModel, usage: s.usage, linesAdded: s.linesAdded, linesRemoved: s.linesRemoved, turns: s.turns }, lastText: s.lastAssistantText.slice(-1200) };
 }
 export function onSessionStart(i) {
     const cwd = i.cwd ?? process.cwd();
@@ -98,9 +98,8 @@ export function onStop(i) {
     const cwd = i.cwd ?? process.cwd();
     const session = i.session_id ?? "unknown";
     setLang(resolveLang(cwd));
-    const s = summarizeTranscript(i.transcript_path, readGlobal().pricing);
-    const cost = { usd: s.costUsd, exact: s.exact, model: s.primaryModel, usage: s.usage, linesAdded: s.linesAdded, linesRemoved: s.linesRemoved, turns: s.turns };
-    append(cwd, { v: 1, ts: now(), session, type: "stop", lastText: s.lastAssistantText.slice(-1200), cost });
+    const { cost, lastText } = costOf(i.transcript_path);
+    append(cwd, { v: 1, ts: now(), session, type: "stop", lastText, cost });
     const st = readState(cwd, session);
     writeState(cwd, session, { ...st, stops: (st.stops ?? 0) + 1 });
     writeHandoff(cwd);
@@ -111,6 +110,7 @@ export function onSessionEnd(i) {
     setLang(resolveLang(cwd));
     const st = readState(cwd, session);
     const durationMs = st.startTs ? new Date(now()).getTime() - new Date(st.startTs).getTime() : 0;
-    append(cwd, { v: 1, ts: now(), session, type: "session.end", reason: i.reason ?? "other", cost: costOf(i.transcript_path), durationMs });
+    const { cost, lastText } = costOf(i.transcript_path);
+    append(cwd, { v: 1, ts: now(), session, type: "session.end", reason: i.reason ?? "other", cost, durationMs, lastText: lastText || undefined });
     writeHandoff(cwd);
 }

@@ -68,6 +68,8 @@ export function sessions(events) {
                 s.cost = e.cost;
                 s.reason = e.reason;
                 s.durationMs = e.durationMs;
+                if (e.lastText)
+                    s.lastText = e.lastText;
                 break;
         }
     }
